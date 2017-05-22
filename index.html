@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+       <meta name="description" content="">
+       <meta name="author" content="">
+
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+        <!-- <link rel="icon" href="../../favicon.ico"> -->
+<!--      <link rel="stylesheet" href="css/style.css"> -->
+  <!--<script src="js/javaFunctions.js"></script>-->
+
+        <title>jQuery Restaurant</title>
+  </head>
+  <body>
+    <div id="content">
+    </div>
+
+  <script>
+    $(document).ready(function () {
+      const contentWrapper = $('#content');
+      const buttonGroup = $('<div>');
+      contentWrapper.append(buttonGroup);
+      
+      var createButtons = function(){  
+       for (var i = 1; i <= 3; i++) {
+          buttonGroup.append(`<button data-key='${i}'> Page ${i} </button>`);
+        }
+      }
+      createButtons();
+
+      let target = $('<div>');
+      target.addClass('page');
+
+      contentWrapper.append(target); 
+    
+
+      function makePage1(){
+        let page = $('.page')
+        page.css({"width": "100vw", "height": "100vh","background": "url('./cake-2201881_1920.jpg')", "background-size":"cover","background-position":"center top"});
+
+        const header = $("<h1>");
+
+        header.html("When you REALLY need some donuts but a simple store won\'t do.  Come to . .  <br><span> Donut Town <\/span> ");
+
+        header.css({"position":"absolute","top":"52%", "left":"52%", "color":"white", "text-align":"center", "transform":"translate(-50%, -50%)", "margin":"0", "font-size":"40px"});
+
+        page.append(header);
+
+      }
+
+      function makePage2(){
+        let page = $('.page');
+        
+        page.css({"width":"300px","height":"300px","border":"10px solid black"});
+        contentWrapper.append(page);
+      }
+      function makePage3(){
+        let page = $('.page');
+        page.css({"width":"300px","height":"300px","border":"10px solid red"});
+        contentWrapper.append(page);
+      }
+      $('button').on('click', function makePage(e){
+
+        const pageNumber=e.target.dataset.key;
+        $('.page').empty().removeAttr("style");
+        if (pageNumber === "1"){
+          makePage1();
+        } else if (pageNumber === "2"){
+          makePage2();
+        } else {
+          makePage3();
+        }
+      })
+
+
+    });
+    </script>
+  
+  </body>
+</html>
