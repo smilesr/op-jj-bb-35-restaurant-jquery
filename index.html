@@ -56,14 +56,78 @@
 
       function makePage2(){
         let page = $('.page');
-        
-        page.css({"width":"300px","height":"300px","border":"10px solid black"});
+        let article = $('<article>');
+        let div = $('<div>');
+        let h1 = $('<h1>');
+        h1.text('The Menu');
+        article.append(div);
+        div.after(h1);
+        page.append(article);
+
+        let section = $("<section class='drinkSection'></section>\
+          <section class='sweetSection'></section>\
+          <section class='sandwichSection'></section>");
+        article.append(section);
+        let h21 = $('<h2>');
+        let ul1 = $('<ul>');
+        let lia = $('<li>');
+        let lib = $('<li>');
+        let lic = $('<li>');
+
+        /* DRINKS */
+        ul1.addClass('drinks');
+        lia.text('Coffee ... $2');
+        lib.text('Iced Coffee ... $3');
+        lic.text('Milk ... $2');
+        h21.text("Drinks");
+        $('.drinkSection').append(h21);
+        $('.drinkSection').append(ul1);
+        $('.drinks').append(lia);
+        lia.after(lib);
+        lib.after(lic);
+
+        /*SWEETS*/
+        let h22 = $('<h2>');
+        let ul2 = $('<ul>');
+        let lid = $('<li>');
+        let lie = $('<li>');
+        let lif = $('<li>');
+        ul2.addClass('sweets');
+        lid.text('Donut ... $1');
+        lie.text('Bear Claw ... $2 ');
+        lif.text('Danish ... $2');
+        h22.text("Sweets");
+        $('.sweetSection').append(h22);
+        $('.sweetSection').append(ul2);
+        $('.sweets').append(lid);
+        lid.after(lie);
+        lie.after(lif);
+
+        let h23 = $('<h2>');
+        let ul3 = $('<ul>');
+        let lig = $('<li>');
+        let lih = $('<li>');
+        let lii = $('<li>');
+
+        /*SANDWICHES*/
+        ul3.addClass('sandwiches');
+        lig.text('Egg Sandwich ... $4');
+        lih.text('Egg & Bacon Sandwich ... $6');
+        lii.text('Bacon Sandwich ... $4');
+        h23.text("Sandwiches");
+        $('.sandwichSection').append(h23);
+        $('.sandwichSection').append(ul3);
+        $('.sandwiches').append(lig);
+        lig.after(lih);
+        lih.after(lii);    
+
         contentWrapper.append(page);
       }
       function makePage3(){
         let page = $('.page');
         page.css({"width":"300px","height":"300px","border":"10px solid red"});
         contentWrapper.append(page);
+
       }
       $('button').on('click', function makePage(e){
 
