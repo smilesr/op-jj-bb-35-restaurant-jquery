@@ -1,150 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-       <meta name="description" content="">
-       <meta name="author" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-
-        <!-- <link rel="icon" href="../../favicon.ico"> -->
-<!--      <link rel="stylesheet" href="css/style.css"> -->
-  <!--<script src="js/javaFunctions.js"></script>-->
-
-        <title>jQuery Restaurant</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
+    <title>jQuery Restaurant</title>
   </head>
   <body>
     <div id="content">
     </div>
 
-  <script>
-    $(document).ready(function () {
-      const contentWrapper = $('#content');
-      const buttonGroup = $('<div>');
-      contentWrapper.append(buttonGroup);
+    <script>
+      $(document).ready(function () {
+        const contentWrapper = $('#content');
+        const buttonGroup = $('<div>');
+        contentWrapper.append(buttonGroup);
       
-      var createButtons = function(){  
-       for (var i = 1; i <= 3; i++) {
+        var createButtons = function(){  
+        for (var i = 1; i <= 3; i++) {
           buttonGroup.append(`<button data-key='${i}'> Page ${i} </button>`);
+          }
         }
-      }
-      createButtons();
-
-      let target = $('<div>');
-      target.addClass('page');
-
-      contentWrapper.append(target); 
+        createButtons();
+        let page = $('<div>');
+        page.addClass('page');
+        contentWrapper.append(page); 
     
+        function makePage1(){
+          let page = $('.page')
+          page.css({"width": "100vw", "height": "100vh","background": "url('./cake-2201881_1920.jpg')", "background-size":"cover","background-position":"center top"});
 
-      function makePage1(){
-        let page = $('.page')
-        page.css({"width": "100vw", "height": "100vh","background": "url('./cake-2201881_1920.jpg')", "background-size":"cover","background-position":"center top"});
+          const header = $("<h1>");
 
-        const header = $("<h1>");
+          header.html("When you REALLY need some donuts but a simple store won\'t do.  Come to . .  <br><span> Donut Town <\/span> ");
 
-        header.html("When you REALLY need some donuts but a simple store won\'t do.  Come to . .  <br><span> Donut Town <\/span> ");
+          header.css({"position":"absolute","top":"52%", "left":"52%", "color":"white", "text-align":"center", "transform":"translate(-50%, -50%)", "margin":"0", "font-size":"40px"});
 
-        header.css({"position":"absolute","top":"52%", "left":"52%", "color":"white", "text-align":"center", "transform":"translate(-50%, -50%)", "margin":"0", "font-size":"40px"});
-
-        page.append(header);
-
-      }
-
-      function makePage2(){
-        let page = $('.page');
-        let article = $('<article>');
-        let div = $('<div>');
-        let h1 = $('<h1>');
-        h1.text('The Menu');
-        article.append(div);
-        div.after(h1);
-        page.append(article);
-
-        let section = $("<section class='drinkSection'></section>\
-          <section class='sweetSection'></section>\
-          <section class='sandwichSection'></section>");
-        article.append(section);
-        let h21 = $('<h2>');
-        let ul1 = $('<ul>');
-        let lia = $('<li>');
-        let lib = $('<li>');
-        let lic = $('<li>');
-
-        /* DRINKS */
-        ul1.addClass('drinks');
-        lia.text('Coffee ... $2');
-        lib.text('Iced Coffee ... $3');
-        lic.text('Milk ... $2');
-        h21.text("Drinks");
-        $('.drinkSection').append(h21);
-        $('.drinkSection').append(ul1);
-        $('.drinks').append(lia);
-        lia.after(lib);
-        lib.after(lic);
-
-        /*SWEETS*/
-        let h22 = $('<h2>');
-        let ul2 = $('<ul>');
-        let lid = $('<li>');
-        let lie = $('<li>');
-        let lif = $('<li>');
-        ul2.addClass('sweets');
-        lid.text('Donut ... $1');
-        lie.text('Bear Claw ... $2 ');
-        lif.text('Danish ... $2');
-        h22.text("Sweets");
-        $('.sweetSection').append(h22);
-        $('.sweetSection').append(ul2);
-        $('.sweets').append(lid);
-        lid.after(lie);
-        lie.after(lif);
-
-        let h23 = $('<h2>');
-        let ul3 = $('<ul>');
-        let lig = $('<li>');
-        let lih = $('<li>');
-        let lii = $('<li>');
-
-        /*SANDWICHES*/
-        ul3.addClass('sandwiches');
-        lig.text('Egg Sandwich ... $4');
-        lih.text('Egg & Bacon Sandwich ... $6');
-        lii.text('Bacon Sandwich ... $4');
-        h23.text("Sandwiches");
-        $('.sandwichSection').append(h23);
-        $('.sandwichSection').append(ul3);
-        $('.sandwiches').append(lig);
-        lig.after(lih);
-        lih.after(lii);    
-
-        contentWrapper.append(page);
-      }
-      function makePage3(){
-        let page = $('.page');
-        page.css({"width":"300px","height":"300px","border":"10px solid red"});
-        contentWrapper.append(page);
-
-      }
-      $('button').on('click', function makePage(e){
-
-        const pageNumber=e.target.dataset.key;
-        $('.page').empty().removeAttr("style");
-        if (pageNumber === "1"){
-          makePage1();
-        } else if (pageNumber === "2"){
-          makePage2();
-        } else {
-          makePage3();
+          page.append(header);
         }
-      })
+
+        function makePage2(){
+          let page = $('.page');
+          page.css({
+            width: "100vw",
+            height: "100vh",
+            backgroundColor: "pink"})
+          let article = $('<article>');
+          let divWrapper = $('<div>');
+          let h1 = $('<h1>');
+          h1.text('The Menu');
+          page.append(article);
+          article.append(divWrapper);
+          divWrapper.append(h1);
 
 
-    });
+          article.css({
+            display: "flex",
+            flexFlow: "column wrap",
+            alignItems: "center"
+          })
+
+          let section = $("<section class='drinkSection'></section>\
+            <section class='sweetSection'></section>\
+            <section class='sandwichSection'></section>");
+          divWrapper.append(section);
+          let h21 = $('<h2>');
+          let ul1 = $('<ul>');
+          let lia = $('<li>');
+          let lib = $('<li>');
+          let lic = $('<li>');
+
+          /* DRINKS */
+          ul1.addClass('drinks');
+          lia.text('Coffee ... $2');
+          lib.text('Iced Coffee ... $3');
+          lic.text('Milk ... $2');
+          h21.text("Drinks");
+          $('.drinkSection').append(h21);
+          $('.drinkSection').append(ul1);
+          $('.drinks').append(lia);
+          lia.after(lib);
+          lib.after(lic);
+
+          /*SWEETS*/
+          let h22 = $('<h2>');
+          let ul2 = $('<ul>');
+          let lid = $('<li>');
+          let lie = $('<li>');
+          let lif = $('<li>');
+          ul2.addClass('sweets');
+          lid.text('Donut ... $1');
+          lie.text('Bear Claw ... $2 ');
+          lif.text('Danish ... $2');
+          h22.text("Sweets");
+          $('.sweetSection').append(h22);
+          $('.sweetSection').append(ul2);
+          $('.sweets').append(lid);
+          lid.after(lie);
+          lie.after(lif);
+
+          let h23 = $('<h2>');
+          let ul3 = $('<ul>');
+          let lig = $('<li>');
+          let lih = $('<li>');
+          let lii = $('<li>');
+
+          /*SANDWICHES*/
+          ul3.addClass('sandwiches');
+          lig.text('Egg Sandwich ... $4');
+          lih.text('Egg & Bacon Sandwich ... $6');
+          lii.text('Bacon Sandwich ... $4');
+          h23.text("Sandwiches");
+          $('.sandwichSection').append(h23);
+          $('.sandwichSection').append(ul3);
+          $('.sandwiches').append(lig);
+
+          $('h2').css("text-align", "left")
+          lig.after(lih);
+          lih.after(lii);    
+
+          contentWrapper.append(page);
+        }
+        function makePage3(){
+          let page = $('.page');
+          page.css({
+            width: "100vw",
+            height: "100vh",
+            backgroundColor: "pink"})
+          let form = $('<form>');
+          form.attr({
+            action: "/#",
+            method: "post"
+          });
+          page.append(form);
+          let div1 = $('<div>');
+          let label1 = $('<label>');
+          let input1 = $('<input>');
+          label1.attr('for','name');
+          label1.text('Name:');
+          input1.attr({
+            type: "text",
+            id: "name",
+            name: "user_name"
+          });
+          form.append(div1);
+          div1.append(label1);
+          label1.after(input1);
+
+          let div2 = $('<div>');
+          let label2 = $('<label>');
+          let input2 = $('<input>');
+          label2.attr('for','mail');
+          label2.text('Email:');
+          input2.attr({
+            type: "email",
+            id: "mail",
+            name: "user_email"
+          });
+          form.append(div2);
+          div2.append(label2);
+          label2.after(input2);
+
+          let div3 = $('<div>');
+          let label3 = $('<label>');
+          let textArea3 = $('<textarea>');
+          label3.attr('for','msg');
+          label3.text('Message:');
+          textArea3.attr({
+            id: "msg",
+            name: "user_message"
+          });
+          form.append(div3);
+          div3.append(label3);
+          label3.after(textArea3);
+
+          let div4 = $('<div>');
+          let button = $('<button>');
+          button.attr('type','submit');
+          button.text('Submit');
+          form.append(div4);
+          div4.append(button);
+          contentWrapper.append(page);
+
+          form.css({
+            margin: "0 auto",
+            width: "700px",
+            padding: "1em",
+            border: "4px solid pink",
+            borderRadius: "1em"
+          })
+
+
+          $('label').css({
+            display: "inline-block",
+            width: "90px",
+            textAlign: "right",
+            marginRight: "10px"
+
+          })
+
+          label3.css("vertical-align", "top")
+
+          $('input').css({
+            font: "1em sans-serif",
+            width: "600px",
+            boxSizing: "border-box",
+            border: "1px solid pink",
+          })
+
+          $(textArea3).css({
+            boxSizing: "border-box",
+            width: "600px",
+            height: "150px",
+            border: "1px solid pink",
+            })
+
+          $(div1).css("margin-bottom","15px")
+
+          $(div2).css("margin-bottom","15px")
+
+          button.css({
+            marginLeft: "25px",
+            fontSize: "15px",
+            backgroundColor: "pink"})
+
+}
+
+        $('button').on('click', function makePage(e){
+          const pageNumber=e.target.dataset.key;
+          $('.page').empty().removeAttr("style");
+          if (pageNumber === "1"){
+            makePage1();
+            } else if (pageNumber === "2"){
+            makePage2();
+            } else {
+            makePage3();
+          }
+        })
+      });
     </script>
-  
   </body>
 </html>
