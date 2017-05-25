@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -28,10 +27,22 @@
           }
         }
         createButtons();
+        buttonGroup.find('*').css({
+          width: "100px",
+          height: "50px",
+          borderTopLeftRadius: "20px",
+          borderTopRightRadius: "20px",
+          backgroundColor: "pink",
+          border: "2px solid #ff6680"
+        });
+
+
         let page = $('<div>');
         page.addClass('page');
+        page.css("borderTop","2px solid #ff6680");
         contentWrapper.append(page); 
     
+    /*PAGE 1 - HOME PAGE*/
         function makePage1(){
           let page = $('.page')
           page.css({"width": "100vw", "height": "100vh","background": "url('./cake-2201881_1920.jpg')", "background-size":"cover","background-position":"center top"});
@@ -49,6 +60,7 @@
             marginTop: "30px"});
         }
 
+      /*PAGE 2 - MENU*/
         function makePage2(){
           let page = $('.page');
           page.css({
@@ -57,7 +69,7 @@
             backgroundColor: "pink"})
           let article = $('<article>');
           let divWrapper = $('<div>');
-          // divWrapper.css("margin-top","100px")
+   
           let h1 = $('<h1>');
           h1.text('The Menu');
           h1.css({
@@ -136,6 +148,8 @@
           $('li').css("font-size", "25px")
           contentWrapper.append(page);
         }
+
+      /*PAGE 3 - CONTACT */
         function makePage3(){
           let page = $('.page');
           page.css({
@@ -145,11 +159,12 @@
           let div = $('<div>');
           let h1 = $('<h1>');
           let h2 = $('<h2>')
-          // h1.css("text-align","center");
           h1.text("CONTACT US");
-          h1.css("padding-top","70px");
+          h1.css({
+            "padding-top": "20px",
+            "padding-left": "20px",
+            "margin-top": "0px"});
           div.css({
-            // margin: "0 auto",
             boxSizing: "border-box",
             float: "left",
             textAlign: "left",
@@ -274,10 +289,8 @@
             backgroundColor: "pink",
             border: "1px black solid",
             boxShadow: "3px -2px 0px #888888"})
-
 }
-
-        $('button').on('click', function makePage(e){
+        buttonGroup.find('*').on("click",function(e){
           const pageNumber=e.target.dataset.key;
           $('.page').empty().removeAttr("style");
           if (pageNumber === "1"){
