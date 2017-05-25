@@ -38,11 +38,15 @@
 
           const header = $("<h1>");
 
-          header.html("When you REALLY need some donuts but a simple store won\'t do.  Come to . .  <br><span> Donut Town <\/span> ");
+          header.html("When you REALLY need some donuts but a simple store won\'t do.  Come to . .  <br><span class='store-name'> Donut Town <\/span> ");
 
           header.css({"position":"absolute","top":"52%", "left":"52%", "color":"white", "text-align":"center", "transform":"translate(-50%, -50%)", "margin":"0", "font-size":"40px"});
 
           page.append(header);
+          $('.store-name').css({
+            display: "block",
+            fontSize: "80px",
+            marginTop: "30px"});
         }
 
         function makePage2(){
@@ -53,8 +57,12 @@
             backgroundColor: "pink"})
           let article = $('<article>');
           let divWrapper = $('<div>');
+          // divWrapper.css("margin-top","100px")
           let h1 = $('<h1>');
           h1.text('The Menu');
+          h1.css({
+            "font-size": "45px",
+            "margin-top": "10px"})
           page.append(article);
           article.append(divWrapper);
           divWrapper.append(h1);
@@ -63,7 +71,7 @@
           article.css({
             display: "flex",
             flexFlow: "column wrap",
-            alignItems: "center"
+            alignItems: "center",
           })
 
           let section = $("<section class='drinkSection'></section>\
@@ -124,7 +132,8 @@
           $('h2').css("text-align", "left")
           lig.after(lih);
           lih.after(lii);    
-
+          $('h2').css("font-size", "35px")
+          $('li').css("font-size", "25px")
           contentWrapper.append(page);
         }
         function makePage3(){
@@ -133,12 +142,41 @@
             width: "100vw",
             height: "100vh",
             backgroundColor: "pink"})
+          let div = $('<div>');
+          let h1 = $('<h1>');
+          let h2 = $('<h2>')
+          // h1.css("text-align","center");
+          h1.text("CONTACT US");
+          h1.css("padding-top","70px");
+          div.css({
+            // margin: "0 auto",
+            boxSizing: "border-box",
+            float: "left",
+            textAlign: "left",
+            maxWidth: "50%"});
+          page.append(h1);
           let form = $('<form>');
           form.attr({
             action: "/#",
             method: "post"
           });
+          h2.css("margin-top","0")
+          h2.text("Comments:");
           page.append(form);
+          page.append(div);
+          form.append(h2);
+
+          div.append("<p><b>PHONE:</b></p>");
+          div.append("<p class='last'>123-456-7890</p>");
+          div.append("<p><b>EMAIL:</b></p>");
+          div.append("<p class='last'>questions@donuttown.com</p>");
+          div.append("<p><b>ADDRESS:</b></p>");
+          div.append("<p><a href='https://www.google.com/maps/place/200+Galleria+Pkwy+SE,+Atlanta,+GA+30339/@33.8859164,-84.4659305,17z/data=!4m13!1m7!3m6!1s0x88f51048c50a59f3:0xf07b1ef329d88227!2s200+Galleria+Pkwy+SE,+Atlanta,+GA+30339!3b1!8m2!3d33.8859164!4d-84.4637418!3m4!1s0x88f51048c50a59f3:0xf07b1ef329d88227!8m2!3d33.8859164!4d-84.4637418'>200 Galleria Parkway</a></p>");
+          div.append("<p><a href='https://www.google.com/maps/place/200+Galleria+Pkwy+SE,+Atlanta,+GA+30339/@33.8859164,-84.4659305,17z/data=!4m13!1m7!3m6!1s0x88f51048c50a59f3:0xf07b1ef329d88227!2s200+Galleria+Pkwy+SE,+Atlanta,+GA+30339!3b1!8m2!3d33.8859164!4d-84.4637418!3m4!1s0x88f51048c50a59f3:0xf07b1ef329d88227!8m2!3d33.8859164!4d-84.4637418'>Atlanta, GA 30339</a></p>");
+          div.append("<p><img src='./glazed.png' alt='glazed donut'></p>")
+          $('.last').css("margin-bottom","2em")
+          $('div p').last().css("margin-left","150px");
+          $('img').css("margin-top","-15px")
           let div1 = $('<div>');
           let label1 = $('<label>');
           let input1 = $('<input>');
@@ -184,13 +222,18 @@
           let button = $('<button>');
           button.attr('type','submit');
           button.text('Submit');
+          button.on('click', function(e){
+            e.preventDefault;
+            return false;
+          })
           form.append(div4);
           div4.append(button);
           contentWrapper.append(page);
 
           form.css({
-            margin: "0 auto",
-            width: "700px",
+            // margin: "0 auto",
+            float: "left",
+            width: "50%",
             padding: "1em",
             border: "4px solid pink",
             borderRadius: "1em"
@@ -209,14 +252,14 @@
 
           $('input').css({
             font: "1em sans-serif",
-            width: "600px",
+            width: "500px",
             boxSizing: "border-box",
             border: "1px solid pink",
           })
 
           $(textArea3).css({
             boxSizing: "border-box",
-            width: "600px",
+            width: "500px",
             height: "150px",
             border: "1px solid pink",
             })
@@ -228,7 +271,9 @@
           button.css({
             marginLeft: "25px",
             fontSize: "15px",
-            backgroundColor: "pink"})
+            backgroundColor: "pink",
+            border: "1px black solid",
+            boxShadow: "3px -2px 0px #888888"})
 
 }
 
