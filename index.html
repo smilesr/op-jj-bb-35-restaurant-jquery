@@ -19,23 +19,57 @@
       $(document).ready(function () {
         const contentWrapper = $('#content');
         const buttonGroup = $('<div>');
-        contentWrapper.append(buttonGroup);
+        buttonGroup.addClass('.buttons');
+
       
-        var createButtons = function(){  
+        var createButtons = function(){ 
+          let arrPages = ["Home","Menu","Contact"];
         for (var i = 1; i <= 3; i++) {
-          buttonGroup.append(`<button data-key='${i}'> Page ${i} </button>`);
+          buttonGroup.append(`<button data-key='${i}' class='butt'> ${arrPages[i-1]} </button>`);
           }
         }
+
+
         createButtons();
+        contentWrapper.append(buttonGroup);
         buttonGroup.find('*').css({
           width: "100px",
           height: "50px",
           borderTopLeftRadius: "20px",
           borderTopRightRadius: "20px",
-          backgroundColor: "pink",
-          border: "2px solid #ff6680"
+          backgroundColor: "rgb(255,192,203)",
+          border: "2px solid #ff6680",
         });
 
+
+          $('.butt').on('focus',function(){
+              $(this).css({
+              outlineStyle: "solid",
+              outlineColor: "transparent",
+              backgroundColor: "rgb(255, 102, 128)",
+              fontSize: "16px"
+              })
+            })
+            $('.butt').on('focusout',function(){
+              $(this).css({
+              outlineStyle: "solid",
+              outlineColor: "transparent",
+              backgroundColor: "rgb(255,192,203)",
+              fontSize: "12px"
+              })
+            })
+          //     if ($(this).css("background-color") == "rgb(255, 102, 128"){
+          //       console.log($(this).css("background-color"));
+          //       $(this).css("background-color","rgb(255, 192, 203)")
+          //     } else {
+          //       console.log($(this).css("background-color"));
+          //       $(this).css("background-color","rgb(255, 102, 128)")
+          //     }
+          //   });
+            // if ($(this).css(backgroundColor === "#ff6680"){
+
+            // })
+            /* ADD TOGGLE */
 
         let page = $('<div>');
         page.addClass('page');
@@ -74,16 +108,19 @@
           h1.text('The Menu');
           h1.css({
             "font-size": "45px",
-            "margin-top": "10px"})
+            "margin-top": "0px",
+            "padding": "20px"})
           page.append(article);
+          article.append(h1);
           article.append(divWrapper);
-          divWrapper.append(h1);
 
 
-          article.css({
+
+          divWrapper.css({
             display: "flex",
-            flexFlow: "column wrap",
-            alignItems: "center",
+            flexFlow: "row wrap",
+            justifyContent: "space-around"
+            // alignItems: "center",
           })
 
           let section = $("<section class='drinkSection'></section>\
@@ -159,11 +196,12 @@
           let div = $('<div>');
           let h1 = $('<h1>');
           let h2 = $('<h2>')
-          h1.text("CONTACT US");
+          h1.text("Contact Us");
           h1.css({
             "padding-top": "20px",
             "padding-left": "20px",
-            "margin-top": "0px"});
+            "margin-top": "0px",
+            "font-size": "45px"});
           div.css({
             boxSizing: "border-box",
             float: "left",
